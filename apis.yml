@@ -1,17 +1,45 @@
 aid: easyknock
 name: EasyKnock
-description: 'EasyKnock is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'EasyKnock was a New York based residential real estate fintech, founded
+  in 2016 by Jared Kessler, that pioneered consumer sale-leaseback in the United States:
+  homeowners sold their house to EasyKnock for cash and stayed on as renting tenants
+  with an option to repurchase. The company raised roughly $430 million in equity and
+  debt and rolled up several proptech businesses — Ribbon Home, Onder, Balance Home,
+  HomePace and FarmlandFinder — before consumer lawsuits and state attorney general
+  and regulator actions in Massachusetts, Michigan, Connecticut, Texas, Maryland, South
+  Carolina, Pennsylvania and Ohio over its sale-leaseback disclosures. EasyKnock announced
+  it had closed its doors on December 6, 2024. Its website is now a single static shutdown
+  notice, its api.easyknock.com host answers Cloudflare error 1016 (origin DNS deleted),
+  and it never published a public developer program, API reference, SDK or machine-readable
+  specification. This profile is retained as a historical record; there is no API surface
+  to enrich.'
 url: https://raw.githubusercontent.com/api-evangelist/easyknock/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
-x-tier-reason: harvest
+x-tier-reason: defunct-no-api-surface
+x-status: defunct
+x-shutdown-date: '2024-12-06'
+x-domain-status: holding-page
+x-domain-note: easyknock.com and www.easyknock.com return HTTP 200 but serve a single
+  static shutdown notice from a Google Cloud Storage bucket (storage.googleapis.com/easyknock.com/index.html).
+  The domain is still controlled by the company, so it is wired as the Website pointer,
+  but it carries no navigation, no developer surface and no links of any kind. The
+  legacy API host api.easyknock.com still resolves to Cloudflare but returns HTTP 530
+  / error 1016 (Origin DNS error) — the origin record behind it has been deleted.
 specificationVersion: '0.20'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
 - Company
+- Defunct
+- Real Estate
+- PropTech
+- Fintech
+- Sale Leaseback
+- Home Equity
+- Mortgage
+- Consumer Finance
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +47,31 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/easyknock-domain-security.yml
 - type: Website
+  url: https://www.easyknock.com/
+- type: SecondaryMarket
   url: https://forgeglobal.com/easyknock_stock/
+x-coverage:
+  state: none
+  reason: defunct
+  detail: EasyKnock ceased operations on 2024-12-06; easyknock.com now serves only a
+    static "EasyKnock has closed its doors" notice out of a Google Cloud Storage bucket,
+    and the legacy api.easyknock.com host answers Cloudflare error 1016 because its
+    origin DNS record has been deleted.
+  evidence:
+  - url: https://www.easyknock.com/
+    status: 200
+  - url: https://api.easyknock.com/openapi.json
+    status: 530
+  - url: https://www.easyknock.com/.well-known/api-catalog
+    status: 404
+  - url: https://api.github.com/orgs/easyknock
+    status: 404
+  checked: '2026-08-12'
+x-enrichment:
+  date: '2026-08-12'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1

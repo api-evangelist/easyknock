@@ -1,0 +1,132 @@
+generated: '2026-08-12'
+method: probed
+source: live GET of /.well-known/* on every host EasyKnock still resolves
+note: >-
+  RECORDED ABSENCE, NOT A SURFACE. Every /.well-known/ path probed on every EasyKnock
+  host missed, so NO WellKnown, APICatalog or SecurityTxt pointer is wired into apis.yml
+  from this file. The two live web hosts (easyknock.com, www.easyknock.com) are a static
+  Google Cloud Storage bucket serving a one-paragraph shutdown notice, so every path
+  returns the GCS XML NoSuchKey 404 body rather than an application 404. The legacy API
+  host api.easyknock.com still has a Cloudflare DNS record but its origin has been
+  deleted, so every path returns HTTP 530 with "error code: 1016" (Origin DNS error) —
+  the surface is gone, not merely unpublished.
+hosts:
+- host: https://www.easyknock.com
+  reachable: true
+  serves: static shutdown notice (Google Cloud Storage bucket easyknock.com)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://easyknock.com
+  reachable: true
+  serves: static shutdown notice (Google Cloud Storage bucket easyknock.com)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://api.easyknock.com
+  reachable: false
+  serves: 'Cloudflare error 1016 (Origin DNS error) — origin record deleted'
+  documents:
+  - path: /.well-known/security.txt
+    status: 530
+  - path: /.well-known/openid-configuration
+    status: 530
+  - path: /.well-known/oauth-authorization-server
+    status: 530
+  - path: /.well-known/oauth-protected-resource
+    status: 530
+  - path: /.well-known/api-catalog
+    status: 530
+  - path: /.well-known/ai-plugin.json
+    status: 530
+  - path: /.well-known/agent-card.json
+    status: 530
+  - path: /.well-known/agent.json
+    status: 530
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery, probed against every live host before recording "no
+    spec". All missed with the same host-level status shown above (404 on the two GCS
+    web hosts, 530 on the dead API host). No OpenAPI, Swagger, GraphQL SDL, AsyncAPI,
+    MCP endpoint or llms.txt exists anywhere on EasyKnock infrastructure.
+  paths:
+  - /openapi.json
+  - /openapi.yaml
+  - /swagger.json
+  - /v1/openapi.json
+  - /api-docs
+  - /docs
+  - /redoc
+  - /llms.txt
+  - /graphql
+  - /asyncapi.yaml
+  results:
+    openapi_found: false
+    graphql_found: false
+    asyncapi_found: false
+    mcp_found: false
+    llms_txt_found: false
+  github_org:
+    probed:
+    - url: https://api.github.com/orgs/easyknock
+      status: 404
+    - url: https://api.github.com/orgs/EasyKnock
+      status: 404
+    found: false
+    note: >-
+      No first-party GitHub organization. A repository search for "easyknock" returns
+      14 personal repositories, all of them candidate take-home assignments and interview
+      projects ("Test Assignment", "easyknock-challenge", "EasyKnockAssessment"), none
+      published by the company.
+  registries:
+    note: >-
+      No first-party client library on any public registry, so no packages/ artifact is
+      written and no SDKs pointer is emitted.
+    probed:
+    - registry: npm
+      query: easyknock
+      results: 0
+    - registry: pypi
+      package: easyknock
+      status: 404
+    - registry: rubygems
+      package: easyknock
+      status: 404
+    - registry: crates.io
+      query: easyknock
+      results: 0
+summary:
+  hosts_probed: 3
+  paths_probed: 54
+  documents_found: 0
+  agent_card_found: false
+  security_txt_found: false
+  pointers_emitted: []

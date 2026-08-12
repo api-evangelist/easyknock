@@ -42,5 +42,33 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-EasyKnock is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/easyknock_stock/
+EasyKnock was a New York based residential real estate fintech, founded in 2016 by Jared Kessler,
+that pioneered consumer sale-leaseback in the United States: homeowners sold their house to
+EasyKnock for cash and stayed on as renting tenants with an option to repurchase. The company
+raised roughly $430 million in equity and debt and rolled up several proptech businesses —
+Ribbon Home, Onder, Balance Home, HomePace and FarmlandFinder — before consumer lawsuits and
+state attorney general and regulator actions in Massachusetts, Michigan, Connecticut, Texas,
+Maryland, South Carolina, Pennsylvania and Ohio over its sale-leaseback disclosures.
+
+**EasyKnock announced it had closed its doors on December 6, 2024.**
+
+## Why this profile is thin
+
+`easyknock.com` still returns HTTP 200, but the entire site is one static paragraph —
+"After many years of serving consumers, EasyKnock has closed its doors" — served out of a
+Google Cloud Storage bucket. There is no navigation and there are no links of any kind. The
+legacy API host `api.easyknock.com` still has a Cloudflare DNS record but answers HTTP 530 /
+`error code: 1016` (Origin DNS error), meaning the origin behind it has been deleted.
+
+Full contract discovery was run anyway before recording the zero — OpenAPI, Swagger, GraphQL,
+AsyncAPI, MCP, `llms.txt` and the whole `/.well-known/` surface across all three hosts, plus
+GitHub and the npm / PyPI / RubyGems / crates.io registries. Every probe missed. The recorded
+absences are in [`well-known/easyknock-well-known.yml`](well-known/easyknock-well-known.yml).
+
+The one artifact with real content is
+[`security/easyknock-domain-security.yml`](security/easyknock-domain-security.yml): the domain
+is still registered and still publishes SPF and a DMARC `quarantine` policy, consistent with a
+wind-down that keeps email working for former customers.
+
+- Website (shutdown notice): https://www.easyknock.com/
+- Secondary-market listing: https://forgeglobal.com/easyknock_stock/
