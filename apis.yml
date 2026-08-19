@@ -27,7 +27,7 @@ x-domain-note: easyknock.com and www.easyknock.com return HTTP 200 but serve a s
   but it carries no navigation, no developer surface and no links of any kind. The
   legacy API host api.easyknock.com still resolves to Cloudflare but returns HTTP 530
   / error 1016 (Origin DNS error) — the origin record behind it has been deleted.
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
