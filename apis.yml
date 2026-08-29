@@ -14,6 +14,9 @@ description: 'EasyKnock was a New York based residential real estate fintech, fo
   specification. This profile is retained as a historical record; there is no API surface
   to enrich.'
 url: https://raw.githubusercontent.com/api-evangelist/easyknock/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "Its website is now a single static shutdown notice, its api.easyknock.com host answers Cloudflare error 1016 (origin DNS deleted), and it never published a public developer program, API reference, SDK"
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
