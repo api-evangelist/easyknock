@@ -64,33 +64,44 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-EasyKnock was a New York based residential real estate fintech, founded in 2016 by Jared Kessler,
-that pioneered consumer sale-leaseback in the United States: homeowners sold their house to
-EasyKnock for cash and stayed on as renting tenants with an option to repurchase. The company
-raised roughly $430 million in equity and debt and rolled up several proptech businesses —
-Ribbon Home, Onder, Balance Home, HomePace and FarmlandFinder — before consumer lawsuits and
-state attorney general and regulator actions in Massachusetts, Michigan, Connecticut, Texas,
-Maryland, South Carolina, Pennsylvania and Ohio over its sale-leaseback disclosures.
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
 
-**EasyKnock announced it had closed its doors on December 6, 2024.**
+EasyKnock was a New York based residential real estate fintech, founded in 2016 by Jared Kessler, that pioneered consumer sale-leaseback in the United States: homeowners sold their house to EasyKnock for cash and stayed on as renting tenants with an option to repurchase. The company raised roughly $430 million in equity and debt and rolled up several proptech businesses — Ribbon Home, Onder, Balance Home, HomePace and FarmlandFinder — before consumer lawsuits and state attorney general and regulator actions in Massachusetts, Michigan, Connecticut, Texas, Maryland, South Carolina, Pennsylvania and Ohio over its sale-leaseback disclosures. EasyKnock announced it had closed its doors on December 6, 2024. Its website is now a single static shutdown notice, its api.easyknock.com host answers Cloudflare error 1016 (origin DNS deleted), and it never published a public developer program, API reference, SDK or machine-readable specification. This profile is retained as a historical record; there is no API surface to enrich.
 
-## Why this profile is thin
+**Areas:** Company · Defunct · Real Estate · PropTech · Fintech · Sale-Leaseback · Home Equity · Mortgage · Consumer Finance
 
-`easyknock.com` still returns HTTP 200, but the entire site is one static paragraph —
-"After many years of serving consumers, EasyKnock has closed its doors" — served out of a
-Google Cloud Storage bucket. There is no navigation and there are no links of any kind. The
-legacy API host `api.easyknock.com` still has a Cloudflare DNS record but answers HTTP 530 /
-`error code: 1016` (Origin DNS error), meaning the origin behind it has been deleted.
+## EasyKnock on APIs.io (historical record)
 
-Full contract discovery was run anyway before recording the zero — OpenAPI, Swagger, GraphQL,
-AsyncAPI, MCP, `llms.txt` and the whole `/.well-known/` surface across all three hosts, plus
-GitHub and the npm / PyPI / RubyGems / crates.io registries. Every probe missed. The recorded
-absences are in [`well-known/easyknock-well-known.yml`](well-known/easyknock-well-known.yml).
+Everything profiled for EasyKnock is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/easyknock/](https://apis.io/providers/easyknock/)** — or go straight to one of the APIs or properties below.
 
-The one artifact with real content is
-[`security/easyknock-domain-security.yml`](security/easyknock-domain-security.yml): the domain
-is still registered and still publishes SPF and a DMARC `quarantine` policy, consistent with a
-wind-down that keeps email working for former customers.
+### Published properties
 
-- Website (shutdown notice): https://www.easyknock.com/
-- Secondary-market listing: https://forgeglobal.com/easyknock_stock/
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Easyknock Domain Security](https://apis.io/security/easyknock/easyknock-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.easyknock.com/)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for EasyKnock: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/easyknock/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
